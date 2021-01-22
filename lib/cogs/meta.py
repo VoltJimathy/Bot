@@ -7,7 +7,7 @@ from discord import Activity, ActivityType, Embed
 from discord import __version__ as discord_version
 from discord.ext.commands import Cog
 from discord.ext.commands import command
-from psutil import Process, virtual_memory
+from psutil import Process, virtual_memory #type: ignore
 
 from ..db import db
 
@@ -46,10 +46,10 @@ class Meta(Cog):
 	@command(name="ping")
 	async def ping(self, ctx):
 		start = time()
-		message = await ctx.send(f"Pong! DWSP latency: {self.bot.latency*1000:,.0f} ms.")
+		message = await ctx.send(f"Pong! Bot latency: {self.bot.latency*1000:,.0f} ms.")
 		end = time()
 
-		await message.edit(content=f"Pong! DWSP latency: {self.bot.latency*1000:,.0f} ms. Response time: {(end-start)*1000:,.0f} ms.")
+		await message.edit(content=f"Pong! Bot latency: {self.bot.latency*1000:,.0f} ms. Response time: {(end-start)*1000:,.0f} ms.")
 
 	@command(name="stats")
 	async def show_bot_stats(self, ctx):
